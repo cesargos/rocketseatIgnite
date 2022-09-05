@@ -1,18 +1,12 @@
 import express from 'express';
 
-import { categoriesRouters } from './routers/categories.routers';
+import { categoriesRoutes } from './routers/categories.routers';
+import { specificationsRoutes } from './routers/specifications.routes';
 
 const app = express();
 app.use(express.json());
-app.use('/categories', categoriesRouters);
 
-app.get('/', (request, response) => {
-  return response.json({ message: 'Hello world!' });
-});
-
-app.post('/courses', (request, response) => {
-  const { name } = request.body;
-  return response.json({ name });
-});
+app.use('/categories', categoriesRoutes);
+app.use('/specifications', specificationsRoutes);
 
 app.listen(3333, () => console.log('Server is running!'));

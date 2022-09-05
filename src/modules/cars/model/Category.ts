@@ -1,9 +1,7 @@
 import { v4 as uuidV4 } from 'uuid';
 
-interface ICreateCategoryDTO {
-  name: string;
-  description: string;
-}
+import { ICreateCategoryDTO } from '../repositories/ICategoriesRepository';
+
 class Category {
   id: string;
   name: string;
