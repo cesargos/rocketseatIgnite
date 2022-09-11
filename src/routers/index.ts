@@ -7,5 +7,6 @@ const router = Router();
 
 router.use('/categories', categoriesRoutes);
 router.use('/specifications', specificationsRoutes);
+router.get('/teste', (req, res) => res.send('ok'));
 
 export { router };
