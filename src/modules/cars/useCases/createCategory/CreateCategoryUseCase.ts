@@ -1,10 +1,16 @@
+import { inject, injectable } from 'tsyringe';
+
 import {
   ICategoriesRepository,
   ICreateCategoryDTO,
 } from '../../repositories/ICategoriesRepository';
 
+@injectable() // indica que vai ser injetada em algo
 class CreateCategoryUseCase {
-  constructor(private categoriesRepository: ICategoriesRepository) {}
+  constructor(
+    @inject('CategoriesRepository') // indica que esta recebendo uma injeção
+    private categoriesRepository: ICategoriesRepository
+  ) {}
   async execute({ name, description }: ICreateCategoryDTO): Promise<void> {
     const categoryAlreadyExists = await this.categoriesRepository.findByName(
       name

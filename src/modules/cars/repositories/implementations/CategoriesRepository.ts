@@ -15,7 +15,6 @@ class CategoriesRepository implements ICategoriesRepository {
   }
 
   async create({ name, description }: ICreateCategoryDTO): Promise<void> {
-    console.log('\n\n\n\nEntrou no repo\n\n', name, description);
     const id = uuidV4();
     const category = await this.repository.save({
       id,
