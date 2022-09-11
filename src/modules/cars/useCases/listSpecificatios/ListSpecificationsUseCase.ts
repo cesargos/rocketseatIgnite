@@ -9,8 +9,9 @@ class ListSpecificationsUseCase {
     @inject('SpecificationsRepository')
     private specificationRepository: ISpecificationsRepository
   ) {}
-  execute(): Specification[] {
-    return this.specificationRepository.list();
+  async execute(): Promise<Specification[]> {
+    const specifications = await this.specificationRepository.list();
+    return specifications;
   }
 }
 

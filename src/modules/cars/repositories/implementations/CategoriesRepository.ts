@@ -1,5 +1,4 @@
 import { getRepository, Repository } from 'typeorm';
-import { v4 as uuidV4 } from 'uuid';
 
 import { Category } from '../../entities/Category';
 import {
@@ -15,13 +14,11 @@ class CategoriesRepository implements ICategoriesRepository {
   }
 
   async create({ name, description }: ICreateCategoryDTO): Promise<void> {
-    const id = uuidV4();
-    const category = await this.repository.save({
-      id,
+    const category = await this.repository.create({
       description,
       name,
     });
-    await this.repository.create(category);
+    await this.repository.save(category);
   }
 
   async list(): Promise<Category[] | undefined> {

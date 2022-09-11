@@ -1,8 +1,6 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
-import { ICreateCategoryDTO } from '../repositories/ICategoriesRepository';
-
 @Entity('categories')
 class Category {
   @PrimaryColumn()

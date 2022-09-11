@@ -45,9 +45,9 @@ class ImportCategoryUseCase {
     if (!file) throw new Error('File precisa ser um arquivo válido');
 
     const categories = await this.loadCategories(file);
-    categories.forEach((category) => {
+    categories.forEach(async (category) => {
       const { name, description } = category;
-      const existeCategory = this.categoryRepositories.findByName(name);
+      const existeCategory = await this.categoryRepositories.findByName(name);
       if (!existeCategory) {
         this.categoryRepositories.create({
           name,
