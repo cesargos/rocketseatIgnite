@@ -28,6 +28,11 @@ class UserRepository implements IUsersRepository {
     const users = this.repository.find();
     return users;
   }
+
+  findByEmail(email: string): Promise<User | undefined> {
+    const user = this.repository.findOne({ email });
+    return user;
+  }
 }
 
 export { UserRepository };
