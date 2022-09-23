@@ -2,6 +2,7 @@ import { parse as csvParse } from 'csv-parse';
 import { createReadStream, promises } from 'fs';
 import { inject, injectable } from 'tsyringe';
 
+import { AppError } from '../../../../errors/AppError';
 import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
 
 interface IImportCategory {
@@ -42,7 +43,7 @@ class ImportCategoryUseCase {
   }
 
   async execute(file: Express.Multer.File | undefined): Promise<void> {
-    if (!file) throw new Error('File precisa ser um arquivo válido');
+    if (!file) throw new AppError('File precisa ser um arquivo válido');
 
     const categories = await this.loadCategories(file);
     categories.forEach(async (category) => {
