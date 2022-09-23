@@ -1,3 +1,5 @@
+// usando o siglethon para armazenar em memoria
+
 import { Specification } from '../../model/Specification';
 import {
   ISpecificationsRepository,
